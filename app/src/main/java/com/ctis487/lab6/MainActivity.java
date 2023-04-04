@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.ctis487.lab6.databinding.ActivityMainBinding;
 
@@ -47,12 +48,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {
                 @Override
-                public void onActivityResult(ActivityResult result) {
+                public void onActivityResult(ActivityResult result){
+                    if(result.getResultCode()==RESULT_OK){
+                        Intent resultIntent = result.getData();
+                        double avg = resultIntent.getDoubleExtra("averageResult",0);
+                        Toast.makeText(MainActivity.this, "Average is "+ avg, Toast.LENGTH_SHORT).show();
 
-                }
+                    }
+
             }
-
-    );
+}
 
     @Override
     public void onClick(View v) {
