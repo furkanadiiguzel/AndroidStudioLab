@@ -28,7 +28,14 @@ public class SecondActivity extends AppCompatActivity {
         int num3 = Integer.parseInt(recivedIntent.getStringExtra("num3"));
         double average = (num1+num2+num3)/3;
 
-        binding.tvResult.setText(name+" "+surname+"\n "+average);
+        binding.resultText.setText(name+" "+surname+"\n "+average);
+
+        binding.closebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
 
     }
